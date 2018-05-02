@@ -1,13 +1,28 @@
+import java.io.*;
+
 public class Model {
 
-    // language data
-    // trie
+    String filename;
+    Trie dict;
 
-    // constructor: take in parameters for algorithm
+//    public Model(File file){
+//        try {
+//            FileReader reader = new FileReader(file);
+//            BufferedReader bufferedReader = new BufferedReader(reader);
+//
+//
+//        }
+//        catch(FileNotFoundException e){
+//            System.out.println("The input file, " + file.getName() + ", is not found!\n");
+//        }
+//    }
 
     // read freq profile
+    public void load(String filename){
+        this.filename = filename;
+        
+    }
 
-    // construct trie[s]
 
     // return list of stems
 
