@@ -19,13 +19,13 @@ public class Model {
 
     // read freq profile
     public void load(String filename){
-        this.filename = filename + ".csv";
+        this.filename = filename;
         BufferedReader br = null;
         String line;
         dict = new Trie();
 
         try{
-            br = new BufferedReader(new FileReader(filename));
+            br = new BufferedReader(new FileReader(filename + ".csv"));
             while((line = br.readLine() )!= null){
                 String[] split = line.split(",");
                 String word = split[0].toLowerCase();
@@ -42,7 +42,11 @@ public class Model {
     }
 
 
-    // return list of stems
+//    // return list of stems
+//    public DoublyLinkedList<String> getStems(){
+//        return dict.listStems();
+//    }
+
 
     // test the model against gold standard
     public void test(){
@@ -53,8 +57,8 @@ public class Model {
         int count = 0;
 
         try{
-            br = new BufferedReader(new FileReader(filename));
-            bw = new BufferedWriter(new FileWriter(new File(this.filename + "results.txt")));
+            br = new BufferedReader(new FileReader(filename + ".csv"));
+            bw = new BufferedWriter(new FileWriter(new File(this.filename + "_results.txt")));
             bw.write("word" + ", " + "real stem" + ", "+ "stem guess" + ", " + "correct?" + "\n");
             while((line = br.readLine() )!= null){
                 String[] split = line.split(",");
@@ -63,10 +67,12 @@ public class Model {
                 int freq = Integer.parseInt(split[2].replaceAll("[\uFEFF-\uFFFF]",""));
                 String guess = dict.getLongestMatchingPrefix(word,freq);
                 if(guess.equals(stem))
-                    correct++;
-                count++;
-                if(!word.equals(stem))
-                    bw.write(word + ", " + stem + ", "+ guess + ", " + guess.equals(stem) + "\n");
+                    if(!word.equals(stem))
+                        correct++;
+               if(!word.equals(stem))
+                    count++;
+//               if(!word.equals(stem))
+                   bw.write(word + ", " + stem + ", "+ guess + ", " + guess.equals(stem) + "\n");
             }
             double percentage = 100 * (double) correct / (double) count;
             System.out.println("Test results: " + percentage + "% " + "(" + correct + " out of " + count + " correct)");

@@ -1,49 +1,54 @@
 import org.junit.Test;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class Testing {
 
-//  @Test
-//   public void testTrie() {
-//    Trie dict = new Trie();
-//    dict.insert("are");
-//    dict.insert("area");
-//    dict.insert("base");
-//    dict.insert("cat");
-//    dict.insert("cater");
-//    dict.insert("caterer");
-//    dict.insert("basement");
-//
-//    String input = "caterer";
-//    System.out.print(input + ":   ");
-//    System.out.println(dict.getLongestMatchingPrefix(input));
-//    System.out.print(input + ":   ");
-//    System.out.println(dict.getShortestMatchingPrefix(input));
-//
-//    input = "caterers";
-//    System.out.print(input + ":   ");
-//    System.out.println(dict.getLongestMatchingPrefix(input));
-//
-//    input = "basement";
-//    System.out.print(input + ":   ");
-//    System.out.println(dict.getLongestMatchingPrefix(input));
-//
-//    input = "are";
-//    System.out.print(input + ":   ");
-//    System.out.println(dict.getLongestMatchingPrefix(input));
-//
-//    input = "arex";
-//    System.out.print(input + ":   ");
-//    System.out.println(dict.getLongestMatchingPrefix(input));
-//
-//    input = "basemexz";
-//    System.out.print(input + ":   ");
-//    System.out.println(dict.getLongestMatchingPrefix(input));
-//
-//    input = "xyz";
-//    System.out.print(input + ":   ");
-//    System.out.println(dict.getLongestMatchingPrefix(input));
-//  }
+  @Test
+   public void testTrie() {
+    Trie dict = new Trie();
+    dict.insert("are",0);
+    dict.insert("area",0);
+    dict.insert("base",0);
+    dict.insert("cat",0);
+    dict.insert("cater",0);
+    dict.insert("caterer",0);
+    dict.insert("basement",0);
+
+    String input = "caterer";
+    System.out.print(input + ":   ");
+    System.out.println(dict.getLongestMatchingPrefix(input,0));
+    System.out.print(input + ":   ");
+    System.out.println(dict.getShortestMatchingPrefix(input,0));
+
+    input = "caterers";
+    System.out.print(input + ":   ");
+    System.out.println(dict.getLongestMatchingPrefix(input,0));
+
+    input = "basement";
+    System.out.print(input + ":   ");
+    System.out.println(dict.getLongestMatchingPrefix(input,0));
+
+    input = "are";
+    System.out.print(input + ":   ");
+    System.out.println(dict.getLongestMatchingPrefix(input,0));
+
+    input = "arex";
+    System.out.print(input + ":   ");
+    System.out.println(dict.getLongestMatchingPrefix(input,0));
+
+    input = "basemexz";
+    System.out.print(input + ":   ");
+    System.out.println(dict.getLongestMatchingPrefix(input,0));
+
+    input = "xyz";
+    System.out.print(input + ":   ");
+    System.out.println(dict.getLongestMatchingPrefix(input,0));
+  }
 //
 //  @Test
 //  public void testTrieMongolian(){
@@ -101,4 +106,21 @@ public class Testing {
     mag.test();
   }
 
+//  @Test
+//  public void testStems() {
+//    Model turk = new Model();
+//    turk.load("data/turkish");
+//
+//    try {
+//      BufferedWriter bw = new BufferedWriter(new FileWriter("data/turkish_stems.txt"));
+//      for(String stem : turk.getStems())
+//        bw.write(stem + "\n");
+//    }
+//    catch(FileNotFoundException e){
+//      System.out.println("The input file is not found\n");
+//    }
+//    catch(IOException e){
+//      e.printStackTrace(System.out);
+//    }
+//  }
 }
